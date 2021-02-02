@@ -4,15 +4,15 @@ let trees=
     {
         id : 1,
         name : "Red pine",
-        img : "https://es.wikipedia.org/wiki/Pinus_resinosa#/media/Archivo:Pinus_resinosa.jpg",
+        img : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Pinus_resinosa.jpg/220px-Pinus_resinosa.jpg",
         height: "Large",
         deciduous: false
     },
-    // Periuvian pepper
+    // Peruvian pepper
     {
         id : 2,
         name : "Peruvian pepper",
-        img : "https://es.wikipedia.org/wiki/Schinus_molle#/media/Archivo:Schinus_molle01.jpg",
+        img : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Schinus_Molle.jpg/220px-Schinus_Molle.jpg",
         height: "Medium",
         deciduous: false
     },
@@ -20,7 +20,7 @@ let trees=
     {
         id : 3,
         name : "Japanese Maple",
-        img : "https://en.wikipedia.org/wiki/Acer_palmatum#/media/File:Acer_palmatum_BotGartenMuenster_Faecherahorn_6691.jpg",
+        img : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Acer_palmatum0.jpg/220px-Acer_palmatum0.jpg",
         height: "Small",
         deciduous: true
     },
@@ -76,7 +76,7 @@ let trees=
     {
         id : 10,
         name : "Giant Sequoia",
-        img : "https://en.wikipedia.org/wiki/Sequoiadendron_giganteum",
+        img : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Grizzly_Giant_Mariposa_Grove.jpg/220px-Grizzly_Giant_Mariposa_Grove.jpg",
         height: "high",
         deciduous: false
     },
