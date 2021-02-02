@@ -12,6 +12,7 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/trees', routes.trees)
+app.use('/users', routes.users);
 
 app.listen(3000, ()=>{
     console.log("I am listening");
