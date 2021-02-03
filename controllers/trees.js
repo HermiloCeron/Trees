@@ -1,4 +1,5 @@
 const Tree = require('../models').Tree;
+const User = require('../models').user;
 
 const index = (req, res) => {
     Tree.findAll()
@@ -23,14 +24,20 @@ const renderTrees = (req, res) => {
 };
 
 const editTree = (req, res) => {
+    
     Tree.findByPk(req.params.id)
     .then(tree => {
-        res.render(
-            'edit.ejs', //render views/edit.ejs
-            { //pass in an object that contains
-                tree: tree, //the fruit object
-            }
-        );
+        User.findAll()
+        .then(allUsers => {
+            res.render(
+                'edit.ejs', //render views/edit.ejs
+                { //pass in an object that contains
+                    tree: tree, //the fruit object
+                    users: allUsers
+                }
+            );    
+        })
+        
     })
 };
 

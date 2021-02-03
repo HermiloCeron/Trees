@@ -1,4 +1,5 @@
 // const users = require('../users');
+const Tree = require('../models').Tree;
 const User = require('../models').user;
 
 const renderHomepage = (req, res) => {
@@ -14,17 +15,27 @@ const login = (req, res) => {
 }
 
 const showProfile = (req, res) => {
-    User.findByPk(req.params.id)
+    User.findByPk(req.params.id, {
+        include : [
+            {
+            model: Tree,
+            attributes: ['name']
+            },
+        ],
+        attributes: ['id', 'name', 'username', 'password', 'email', 'location']
+    })
     .then(user => {
-        res.render('./users/profile.ejs', {
-            user:user
+        Tree.findAll()
+        .then(allTrees => {
+            res.render('./users/profile.ejs', {
+                user:user,
+                trees: allTrees
+            })
         })
     })
-    
 }
 
 const createUser = (req, res) => {
-    console.log(User)
     User.create(req.body)
     .then(newUser => {
         res.redirect('/users/profile/'+ (newUser.id))
@@ -32,13 +43,20 @@ const createUser = (req, res) => {
 }
 
 const editUser = (req, res) => {
-    User.update(req.body,  {
+        User.update(req.body,  {
         where: { id: req.params.id },
         returning: true,
         }
     )
     .then(user => {
-        res.redirect('/users/profile/' + req.params.id)
+        Tree.findByPk(req.body.tree)
+        .then(foundTree => {
+            User.findByPk(req.params.id)
+            .then(foundUser => {
+                foundUser.addTree(foundTree);
+                res.redirect('/users/profile/' + req.params.id);
+            })
+        })
     })
 }
 
