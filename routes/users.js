@@ -8,6 +8,7 @@ router.get("/profile/:id", ctrl.users.showProfile);
 router.post("/profile", ctrl.users.createUser);
 router.post("/", ctrl.users.loginUser);
 router.put("/profile/:id", ctrl.users.editUser);
+router.delete('/:id', ctrl.users.deleteUser);
 
 
 module.exports = router;
