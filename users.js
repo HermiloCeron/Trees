@@ -2,7 +2,6 @@ const { mapLimit } = require("async")
 
 const users = [
     {
-        id: 0,
         name:'Tony Stark',
         username: 'ironman',
         password: 'prettyawesome',
@@ -10,7 +9,6 @@ const users = [
         location: 'Cleveland, OH'
     },
     {
-        id: 1,
         name:'Clark Kent',
         username: 'superman',
         password: 'canfly',
@@ -18,7 +16,6 @@ const users = [
         location: 'Bakersfield, CA'
     },
     {
-        id: 2,
         name:'Bruce Wayne',
         username: 'batman',
         password: 'hasgadgets',
@@ -26,7 +23,6 @@ const users = [
         location: 'St. Louis, MO'
     },
     {
-        id: 3,
         name: 'Johny Bravo',
         username: 'coolbravo',
         password: '12345',
@@ -34,7 +30,6 @@ const users = [
         location: 'Lexington-Fayette, KY'
     },
     {
-        id: 4,
         name: 'Homer Simpson',
         username: 'atomichomer',
         password: 'likecake',
@@ -42,7 +37,6 @@ const users = [
         location: 'Lubbock, TX'
     },
     {
-        id: 5,
         name: 'Tom Sawyer',
         username: 'tommy',
         password: 'alabama',
@@ -50,7 +44,6 @@ const users = [
         location: 'Montgomery, Alabama'
     },
     {
-        id: 6,
         name: 'Mr Wilson',
         username: 'runfromdaniel',
         password: 'help',
@@ -58,7 +51,6 @@ const users = [
         location: 'Milwaukee, WI'
     },
     {
-        id: 7,
         name:'Peter Parker',
         username: 'spiderman',
         password: 'superhero',
@@ -66,7 +58,6 @@ const users = [
         location: 'St. Petersburg, FL'
     },
     {
-        id: 8,
         name:'Oz Wizard',
         username: 'magicman',
         password: 'opuspokus',
@@ -74,7 +65,6 @@ const users = [
         location: 'Henderson, NV'
     },
     {
-        id: 9,
         name:'Captain Caveman',
         username: 'caveman',
         password: 'andson',
@@ -82,7 +72,6 @@ const users = [
         location: 'Las Vegas, NV'
     },
     {
-        id: 10,
         name: 'George Jetson',
         username: 'jetson',
         password: 'future',

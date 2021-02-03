@@ -9,5 +9,19 @@
     <h1>Trees Show Page</h1>
     The <%= tree.name %> is  <%= tree.height %>
     <img src=<%=tree.img%> alt="">
+    <h3>This tree can grow in this climate</h3>
+    <% for (let i=0; i< tree.climates.length; i++){ %>
+        <li>
+           <%=tree.climates[i].name%>
+        </li>
+        <br>
+    <% } %>
+    <h3>This tree will grow in these soil types:</h3>
+    <% for (let i=0; i< tree.soilTypes.length; i++){ %>
+        <li>
+           <%=tree.soilTypes[i].name%>
+        </li>
+        <br>
+    <% } %>
 </body>
 </html>

@@ -1,4 +1,6 @@
-const users = require('../models/users');
+// const users = require('../users');
+const Tree = require('../models').Tree;
+const User = require('../models').user;
 
 const renderHomepage = (req, res) => {
     res.render('./users/homepage.ejs')
@@ -13,30 +15,74 @@ const login = (req, res) => {
 }
 
 const showProfile = (req, res) => {
-    res.render('./users/profile.ejs', {
-        user:users[req.params.id],
-        id:req.params.id
+    User.findByPk(req.params.id, {
+        include : [
+            {
+            model: Tree,
+            attributes: ['name']
+            },
+        ],
+        attributes: ['id', 'name', 'username', 'password', 'email', 'location']
+    })
+    .then(user => {
+        Tree.findAll()
+        .then(allTrees => {
+            res.render('./users/profile.ejs', {
+                user:user,
+                trees: allTrees
+            })
+        })
     })
 }
 
 const createUser = (req, res) => {
-    users.push(req.body)
-    res.redirect('/users/profile/'+ (users.length-1))
+    User.create(req.body)
+    .then(newUser => {
+        res.redirect('/users/profile/'+ (newUser.id))
+    })
 }
 
 const editUser = (req, res) => {
-    users[req.params.id] = req.body
-    res.redirect('/users/profile/' + req.params.id)
-    }
+        User.update(req.body,  {
+        where: { id: req.params.id },
+        returning: true,
+        }
+    )
+    .then(user => {
+        Tree.findByPk(req.body.tree)
+        .then(foundTree => {
+            User.findByPk(req.params.id)
+            .then(foundUser => {
+                foundUser.addTree(foundTree);
+                res.redirect('/users/profile/' + req.params.id);
+            })
+        })
+    })
+}
 
 const loginUser = (req, res) => {
-    for (i=0; i<users.length; i++) {
-        if (users[i].username === req.body.username && users[i].password === req.body.password) {
-            res.redirect('/users/profile/' + i)        
+    User.findOne({
+        where: {
+            username: req.body.username,
+            password: req.body.password,
         }
-    }
-    res.redirect('/users/signup/')
+    })
+    .then (user => {
+        res.redirect('/users/profile/' + user.id)
+    })
+    // for (i=0; i<users.length; i++) {
+    //     if (users[i].username === req.body.username && users[i].password === req.body.password) {
+    //         res.redirect('/users/profile/' + i)        
+    //     }
+    // }
+        res.redirect('/users/signup/')
     }    
+const deleteUser = (req,res) => {
+    User.destroy({ where: { id: req.params.id } })
+    .then(() => {
+        res.redirect('/users');
+    })
+}
 
 module.exports = {
     renderHomepage,
@@ -46,4 +92,5 @@ module.exports = {
     showProfile,
     editUser,
     loginUser,
+    deleteUser,
 }

@@ -1,45 +1,98 @@
-const trees = require('../models/trees.js')
+const Tree = require('../models').Tree;
+const User = require('../models').user;
+const Climate = require('../models').climate;
+const soilType = require('../models').soilType;
 
 const index = (req, res) => {
-    res.render('index.ejs', {
-        trees : trees
-    });
-};
+    Tree.findAll()
+    .then(trees => {
+        res.render('index.ejs', {
+            trees : trees
+        });    
+    })
+    };
 
 const renderNew = (req, res) => {
     res.render('new.ejs');
 };
 
 const renderTrees = (req, res) => {
-    res.render('show.ejs', { //second param must be an object
-        tree: trees[req.params.id] //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
-    });
+    Tree.findByPk(req.params.id, {
+        include : [
+            {
+            model: Climate,
+            attributes: ['name']
+            },
+            {
+                model: soilType,
+                attributes: ['name']
+                },
+            ],
+        attributes: ['id', 'name', 'img', 'height', 'deciduous']
+    })
+    .then(tree => {
+        console.log(tree)
+        res.render('show.ejs', { //second param must be an object
+        tree: tree //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
+        });
+    })
 };
 
 const editTree = (req, res) => {
-	res.render(
-		'edit.ejs', //render views/edit.ejs
-		{ //pass in an object that contains
-			tree: trees[req.params.id], //the fruit object
-			id: req.params.id //... and its index in the array
-		}
-	);
+    Tree.findByPk(req.params.id)
+    .then(tree => {
+        Climate.findAll()
+        .then(allClimates => {
+            soilType.findAll()
+            .then(allSoilTypes => {
+                res.render(
+                    'edit.ejs', //render views/edit.ejs
+                    {       //pass in an object that contains
+                        tree: tree, //the fruit object
+                        climates: allClimates,
+                        soilTypes: allSoilTypes,
+                    }
+                );    
+            })
+        })
+   })
 };
 
 const newTree =  (req, res) => {
-    trees.push(req.body);
-    res.redirect('/trees'); //send the user back to /trees
+    Tree.create(req.body)
+    .then(newTree => {
+        res.redirect('/trees'); //send the user back to /trees
+    })
 };
 
 const updateTree = (req, res) => { //:index is the index of our fruits array that we want to change
-    trees[req.params.id] = req.body; //in our fruits array, find the index that is specified in the url (:index).  Set that element to the value of req.body (the input data)
-	res.redirect('/trees'); //redirect to the index page
+    Tree.update(req.body, {
+        where: { id: req.params.id },
+        returning: true,
+        }
+    )
+    .then(tree => {
+        soilType.findByPk(req.body.soilType)
+        .then(foundSoilType => {
+            Climate.findByPk(req.body.climate)
+            .then(foundClimate => {
+                Tree.findByPk(req.params.id)
+                .then(foundTree => {
+                    foundTree.addClimate(foundClimate);
+                    foundTree.addSoilType(foundSoilType);
+                    res.redirect('/trees');  //redirect to the index page
+                })
+            })
+        })
+    })
 };
 
 const deleteTree = (req, res) => {
-	trees.splice(req.params.id, 1); //remove the item from the array
-	res.redirect('/trees');  //redirect back to index route
-};
+    Tree.destroy({ where: { id: req.params.id } })
+    .then(() => {
+        res.redirect('/trees');  //redirect back to index route
+    })
+  };
 
 module.exports = {
     index,

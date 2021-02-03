@@ -7,12 +7,31 @@
 </head>
 <body>
     <h1>Profile Page</h1>
-    <form action='/users/profile/<%= id %>?_method=PUT' method="POST">
+    <form action='/users/profile/<%= user.id %>?_method=PUT' method="POST">
         name: <input type="text" name='name' value='<%= user.name %>'>
         username: <input type="text" name='username' value='<%= user.username %>'>
         password: <input type="text" name='password' value='<%= user.password %>'>
         email: <input type="text" name='email' value='<%= user.email %>'>
+        <select name="tree">
+            <% for ( let i = 0; i < trees.length; i++ ) {
+                let selected = ( i == 0 ) ? "selected" : "";
+            %>
+                <option value="<%=trees[i].id%>" <%=selected%>><%=trees[i].name%>
+                </option>
+           <% } %>
+        </select>
         <input type="submit" value='edit'>
     </form>
+    <form action="/users/<%=user.id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE"/>
+    </form>
+    
+    <h3>This user likes these trees:</h3>
+    <% for (let i=0; i< user.Trees.length; i++){ %>
+        <li>
+           <%=user.Trees[i].name%>
+        </li>
+        <br>
+    <% } %>
 </body>
 </html>
