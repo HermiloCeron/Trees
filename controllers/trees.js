@@ -1,4 +1,4 @@
-const trees = require('../models/trees.js')
+const trees = require('../trees.js')
 
 const index = (req, res) => {
     res.render('index.ejs', {

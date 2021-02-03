@@ -1,4 +1,4 @@
-const users = require('../models/users');
+const users = require('../users');
 
 const renderHomepage = (req, res) => {
     res.render('./users/homepage.ejs')
