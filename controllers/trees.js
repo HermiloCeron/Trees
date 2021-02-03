@@ -1,5 +1,7 @@
 const Tree = require('../models').Tree;
 const User = require('../models').user;
+const Climate = require('../models').climate;
+const soilType = require('../models').soilType;
 
 const index = (req, res) => {
     Tree.findAll()
@@ -15,8 +17,21 @@ const renderNew = (req, res) => {
 };
 
 const renderTrees = (req, res) => {
-    Tree.findByPk(req.params.id)
+    Tree.findByPk(req.params.id, {
+        include : [
+            {
+            model: Climate,
+            attributes: ['name']
+            },
+            {
+                model: soilType,
+                attributes: ['name']
+                },
+            ],
+        attributes: ['id', 'name', 'img', 'height', 'deciduous']
+    })
     .then(tree => {
+        console.log(tree)
         res.render('show.ejs', { //second param must be an object
         tree: tree //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
         });
@@ -24,21 +39,23 @@ const renderTrees = (req, res) => {
 };
 
 const editTree = (req, res) => {
-    
     Tree.findByPk(req.params.id)
     .then(tree => {
-        User.findAll()
-        .then(allUsers => {
-            res.render(
-                'edit.ejs', //render views/edit.ejs
-                { //pass in an object that contains
-                    tree: tree, //the fruit object
-                    users: allUsers
-                }
-            );    
+        Climate.findAll()
+        .then(allClimates => {
+            soilType.findAll()
+            .then(allSoilTypes => {
+                res.render(
+                    'edit.ejs', //render views/edit.ejs
+                    {       //pass in an object that contains
+                        tree: tree, //the fruit object
+                        climates: allClimates,
+                        soilTypes: allSoilTypes,
+                    }
+                );    
+            })
         })
-        
-    })
+   })
 };
 
 const newTree =  (req, res) => {
@@ -55,7 +72,18 @@ const updateTree = (req, res) => { //:index is the index of our fruits array tha
         }
     )
     .then(tree => {
-        res.redirect('/trees'); //redirect to the index page
+        soilType.findByPk(req.body.soilType)
+        .then(foundSoilType => {
+            Climate.findByPk(req.body.climate)
+            .then(foundClimate => {
+                Tree.findByPk(req.params.id)
+                .then(foundTree => {
+                    foundTree.addClimate(foundClimate);
+                    foundTree.addSoilType(foundSoilType);
+                    res.redirect('/trees');  //redirect to the index page
+                })
+            })
+        })
     })
 };
 

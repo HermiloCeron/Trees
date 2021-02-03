@@ -15,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "treeId",
         otherKey: "userId",
       });
+      Tree.belongsToMany(models.climate, {
+        through: "treeClimate",
+        foreignKey: "treeId",
+        otherKey: "climateId",
+      });
+      Tree.belongsToMany(models.soilType, {
+        through: "treeSoilType",
+        foreignKey: "treeId",
+        otherKey: "soilTypeId",
+      });
       // define association here
     }
   };
