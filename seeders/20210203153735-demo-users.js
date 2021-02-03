@@ -1,7 +1,9 @@
-const { mapLimit } = require("async")
+'use strict';
 
-const users = [
-    {
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert('users', [
+      {
         name:'Tony Stark',
         username: 'ironman',
         password: 'prettyawesome',
@@ -77,7 +79,11 @@ const users = [
         password: 'future',
         email: 'gjetson@mail.com',
         location: 'Phoenix, AZ'
-    },
-]
+    }
+    ], {});
+      },
 
-module.exports = users;
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('users', null, {});
+    }
+};

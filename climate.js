@@ -1,6 +1,5 @@
 // Climate types https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification
 [{
-    id : 1,
     name : 'Tropical Rainforest',
     temperature : 'high',
     humidity: 'high',
@@ -9,7 +8,6 @@
 },
 
 {
-    id : 2,
     name : 'Tropical Monsoon',
     temperature : 'high',
     humidity: 'high',
@@ -18,7 +16,6 @@
 },
 
 {
-    id : 3,
     name : 'Tropical Savanna Dry Winter',
     temperature : 'medium',
     humidity: 'low',
@@ -27,7 +24,6 @@
 },
 
 {
-    id : 4,
     name : 'Tropical Savanna Dry Summer',
     temperature : 'high',
     humidity: 'low',
@@ -36,7 +32,6 @@
 },
 
 {
-    id : 5,
     name : 'Arid Desert',
     temperature : 'high',
     humidity: 'low',
@@ -45,7 +40,6 @@
 },
 
 {
-    id : 6,
     name : 'Arid Step',
     temperature : 'medium',
     humidity: 'low',
@@ -54,7 +48,6 @@
 },
 
 {
-    id : 7,
     name : 'Temperate Dry Winter',
     temperature : 'low',
     humidity: 'low',
@@ -63,7 +56,6 @@
 },
 
 {
-    id : 8,
     name : 'Temperate No Dry Season',
     temperature : 'medium',
     humidity: 'high',
@@ -72,7 +64,6 @@
 },
 
 {
-    id : 9,
     name : 'Temperate Dry Summer',
     temperature : 'medium',
     humidity: 'low',
@@ -81,7 +72,6 @@
 },
 
 {
-    id : 10,
     name : 'Continental Dry Winter',
     temperature : 'low',
     humidity: 'low',
@@ -90,7 +80,6 @@
 },
 
 {
-    id : 11,
     name : 'Continental No Dry Season',
     temperature : 'low',
     humidity: 'high',
@@ -99,7 +88,6 @@
 },
 
 {
-    id : 12,
     name : 'Continental Dry Summer',
     temperature : 'high',
     humidity: 'low',
@@ -108,7 +96,6 @@
 },
 
 {
-    id : 13,
     name : 'Polar Tundra',
     temperature : 'low',
     humidity: 'low',
@@ -117,7 +104,6 @@
 },
 
 {
-    id : 14,
     name : 'Polar Eternal Frost',
     temperature : 'low',
     humidity: 'low',

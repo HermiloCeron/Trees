@@ -14,7 +14,7 @@ module.exports = {
       moisture: {
         type: Sequelize.STRING
       },
-      nuttrientContent: {
+      nutrientContent: {
         type: Sequelize.STRING
       },
       soilDepth: {
