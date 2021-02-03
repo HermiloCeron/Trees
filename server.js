@@ -1,4 +1,4 @@
-const trees = require('./models/trees.js');
+// const trees = require('./models/trees.js');
 
 const express = require('express');
 //include the method-override package

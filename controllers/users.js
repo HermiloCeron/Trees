@@ -1,4 +1,5 @@
 const users = require('../users');
+const User = require('../models').User;
 
 const renderHomepage = (req, res) => {
     res.render('./users/homepage.ejs')
