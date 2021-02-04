@@ -100,6 +100,20 @@ const deleteUserTree=(req,res)=>{
     })
 }
 
+const likeTree=(req,res)=>{
+    User.findByPk(req.params.userId)
+    .then(foundUser => {
+        Tree.findByPk(req.params.treeId)
+        .then(foundTree=>{
+            foundUser.addTree(foundTree);
+            // Some time out before redirecting. Reference https://www.w3schools.com/jsref/met_win_settimeout.asp
+            setTimeout(()=>{
+                res.redirect('/users/profile/' + req.params.userId)
+            },1000);
+        })
+    })    
+}
+
 module.exports = {
     renderHomepage,
     signup,
@@ -109,5 +123,6 @@ module.exports = {
     editUser,
     loginUser,
     deleteUser,
-    deleteUserTree
+    deleteUserTree,
+    likeTree
 }

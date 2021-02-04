@@ -25,6 +25,8 @@
                 <input type="checkbox" name="checkedSoilTypes" value="<%=soilTypes[i].id%>"> <%=soilTypes[i].name%>
             <% } %> <br>
             <input type="submit" name="" value="Create Tree"/>
-        </form>
+        </form> <br>
+        <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
+        <a href="/users/profile/<%=userId%>">Back to your profile</a>
     </body>
 </html>
