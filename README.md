@@ -28,7 +28,7 @@ An app to help you choose the rigth tree for your garden.
     + ![Wireframe](./documentation/wireframe.png)
     + ![Databases](./documentation/tree_databases.png)
         - Users data
-        ````
+        ```javascript
         {
         name:'Tony Stark',
         username: 'ironman',
