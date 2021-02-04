@@ -54,7 +54,9 @@ const editUser = (req, res) => {
             User.findByPk(req.params.id)
             .then(foundUser => {
                 foundUser.addTree(foundTree);
-                res.redirect('/users/profile/' + req.params.id);
+                setTimeout(()=>{
+                    res.redirect('/users/profile/' + req.params.id);
+                },1000);
             })
         })
     })
@@ -90,7 +92,10 @@ const deleteUserTree=(req,res)=>{
         Tree.findByPk(req.params.treeId)
         .then(foundTree=>{
             foundUser.removeTree(foundTree);
-            res.redirect('/users/profile/' + req.params.userId)
+            // Some time out before redirecting. Reference https://www.w3schools.com/jsref/met_win_settimeout.asp
+            setTimeout(()=>{
+                res.redirect('/users/profile/' + req.params.userId)
+            },1000);
         })
     })
 }

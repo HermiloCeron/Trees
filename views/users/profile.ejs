@@ -12,6 +12,7 @@
         username: <input type="text" name='username' value='<%= user.username %>'>
         password: <input type="text" name='password' value='<%= user.password %>'>
         email: <input type="text" name='email' value='<%= user.email %>'>
+        location: <input type="text" name='location' value='<%= user.location %>'> 
         <select name="tree">
             <% for ( let i = 0; i < trees.length; i++ ) {
                 let selected = ( i == 0 ) ? "selected" : "";
