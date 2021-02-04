@@ -19,7 +19,7 @@ const showProfile = (req, res) => {
         include : [
             {
             model: Tree,
-            attributes: ['name']
+            attributes: ['id','name']
             },
         ],
         attributes: ['id', 'name', 'username', 'password', 'email', 'location']
@@ -54,7 +54,9 @@ const editUser = (req, res) => {
             User.findByPk(req.params.id)
             .then(foundUser => {
                 foundUser.addTree(foundTree);
-                res.redirect('/users/profile/' + req.params.id);
+                setTimeout(()=>{
+                    res.redirect('/users/profile/' + req.params.id);
+                },1000);
             })
         })
     })
@@ -84,6 +86,20 @@ const deleteUser = (req,res) => {
     })
 }
 
+const deleteUserTree=(req,res)=>{
+    User.findByPk(req.params.userId)
+    .then(foundUser => {
+        Tree.findByPk(req.params.treeId)
+        .then(foundTree=>{
+            foundUser.removeTree(foundTree);
+            // Some time out before redirecting. Reference https://www.w3schools.com/jsref/met_win_settimeout.asp
+            setTimeout(()=>{
+                res.redirect('/users/profile/' + req.params.userId)
+            },1000);
+        })
+    })
+}
+
 module.exports = {
     renderHomepage,
     signup,
@@ -93,4 +109,5 @@ module.exports = {
     editUser,
     loginUser,
     deleteUser,
+    deleteUserTree
 }
