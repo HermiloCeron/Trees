@@ -66,7 +66,6 @@ const editTree = (req, res) => {
             soilType.findAll()
             .then(allSoilTypes => {
                 // Generate an array for the matched climates
-                console.log(tree.climates.length)
                 let matchedClimates=[];
                 for(let i=0;i<allClimates.length;i++){
                     matchedClimates[i]=false;
@@ -76,14 +75,23 @@ const editTree = (req, res) => {
                         }                  
                     }
                 }
-                console.log(matchedClimates)
+                let matchedSoilTypes=[];
+                for(let i=0;i<allSoilTypes.length;i++){
+                    matchedSoilTypes[i]=false;
+                    for(let j=0;j<tree.soilTypes.length;j++){
+                        if(allSoilTypes[i].id===tree.soilTypes[j].id){
+                            matchedSoilTypes[i]=true;
+                        }                  
+                    }
+                }
                 res.render(
                     'edit.ejs', //render views/edit.ejs
                     {       //pass in an object that contains
                         tree: tree, //the fruit object
                         climates: allClimates,
                         soilTypes: allSoilTypes,
-                        matchedClimates: matchedClimates
+                        matchedClimates: matchedClimates,
+                        matchedSoilTypes: matchedSoilTypes
                     }
                 );    
             })

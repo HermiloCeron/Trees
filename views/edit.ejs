@@ -28,15 +28,15 @@
                 <%if(matchedClimates[i]){%> <%="checked"%> <%}%>
             > <%=climates[i].name%>
         <% } %> <br>
-        Soil type:
-        <select name="soilType">
-            <% for ( let i = 0; i < soilTypes.length; i++ ) {
-                let selected = ( i == 0 ) ? "selected" : "";
-            %>
-                <option value="<%=soilTypes[i].id%>" <%=selected%>><%=soilTypes[i].name%>
-                </option>
-           <% } %>
-        </select> <br>
+        Soil type: 
+        <% for(let i=0;i<soilTypes.length;i++){ %>
+            <input 
+                type="checkbox" 
+                name="checkedClimates" 
+                value="<%=soilTypes[i].id%>"
+                <%if(matchedSoilTypes[i]){%> <%="checked"%> <%}%>
+            > <%=soilTypes[i].name%>
+        <% } %> <br>
 		<br/>
 		<input type="submit" name="" value="Submit Changes"/>
         </form>
