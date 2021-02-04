@@ -6,13 +6,9 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <h1>Trees index page</h1>
+        <h1>Trees</h1>
         <div class="Trees">
-            <h1>Trees</h1>
-        </div>
-        <nav>
-            <a href="/trees/new">Create a New Tree</a>
-        </nav>
+        <div class="List">
         <ul>
             <% for(let i=0; i<trees.length; i++) { %>
                 <li>
@@ -24,5 +20,10 @@
                 </li>
             <% } %>
         </ul>
+        <nav class="New">
+            <a href="/trees/new">Create a New Tree</a>
+        </nav>
+        </div>
+    </div>
     </body>
 </html>
