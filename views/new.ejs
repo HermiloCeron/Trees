@@ -16,6 +16,14 @@
                 <option value="Large" >Large</option>
             </select> <br>
             Img: <input type="text" name="img" /><br/>
+            Climate: <br>
+            <% for(let i=0;i<climates.length;i++){ %>
+                <input type="checkbox" name="checkedClimates" value="<%=climates[i].id%>"> <%=climates[i].name%>
+            <% } %> <br>
+            Soil Type: <br>
+            <% for(let i=0;i<soilTypes.length;i++){ %>
+                <input type="checkbox" name="checkedSoilTypes" value="<%=soilTypes[i].id%>"> <%=soilTypes[i].name%>
+            <% } %> <br>
             <input type="submit" name="" value="Create Tree"/>
         </form>
     </body>

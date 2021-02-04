@@ -13,7 +13,16 @@ const index = (req, res) => {
     };
 
 const renderNew = (req, res) => {
-    res.render('new.ejs');
+    Climate.findAll()
+    .then(allClimates=>{
+        soilType.findAll()
+        .then(allSoilTypes => {
+            res.render('new.ejs',{
+                climates: allClimates,
+                soilTypes: allSoilTypes
+            });
+        })
+    })
 };
 
 const renderTrees = (req, res) => {
@@ -59,8 +68,21 @@ const editTree = (req, res) => {
 };
 
 const newTree =  (req, res) => {
+    console.log(req.body)
     Tree.create(req.body)
     .then(newTree => {
+        for(let i=0;i<req.body.checkedClimates.length;i++){
+            Climate.findByPk(req.body.checkedClimates[i])
+            .then(foundClimate=>{
+                newTree.addClimate(foundClimate);
+            })
+        }
+        for(let i=0;i<req.body.checkedSoilTypes.length;i++){
+            soilType.findByPk(req.body.checkedSoilTypes[i])
+            .then(foundSoilType =>{
+                newTree.addSoilType(foundSoilType);
+            })
+        }
         res.redirect('/trees'); //send the user back to /trees
     })
 };
