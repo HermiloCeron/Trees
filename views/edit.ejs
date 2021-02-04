@@ -32,7 +32,7 @@
         <% for(let i=0;i<soilTypes.length;i++){ %>
             <input 
                 type="checkbox" 
-                name="checkedClimates" 
+                name="checkedSoilTypes" 
                 value="<%=soilTypes[i].id%>"
                 <%if(matchedSoilTypes[i]){%> <%="checked"%> <%}%>
             > <%=soilTypes[i].name%>
