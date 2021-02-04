@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/show.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Trees Show Page</h1>
+    <div class="show">
     The <%= tree.name %> is  <%= tree.height %>
+    <br>
     <img src=<%=tree.img%> alt="">
     <h3>This tree can grow in this climate</h3>
     <% for (let i=0; i< tree.climates.length; i++){ %>
@@ -30,5 +35,6 @@
 
     <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
     <a href="/users/profile/<%=userId%>">Back to your profile</a>
+    </div>
 </body>
 </html>
