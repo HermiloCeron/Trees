@@ -22,6 +22,13 @@
            <%=tree.soilTypes[i].name%>
         </li>
         <br>
-    <% } %>
+    <% } %> <br>
+
+    <form action='/users/profile/<%= userId %>/<%=tree.id%>?_method=PUT' method="POST">
+        <input type="submit" value='Like'>
+    </form>
+
+    <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
+    <a href="/users/profile/<%=userId%>">Back to your profile</a>
 </body>
 </html>

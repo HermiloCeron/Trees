@@ -8,6 +8,7 @@ router.get("/profile/:id", ctrl.users.showProfile);
 router.post("/profile", ctrl.users.createUser);
 router.post("/", ctrl.users.loginUser);
 router.put("/profile/:id", ctrl.users.editUser);
+router.put("/profile/:userId/:treeId", ctrl.users.likeTree);
 router.delete('/:id', ctrl.users.deleteUser);
 router.delete('/tree/:userId/:treeId',ctrl.users.deleteUserTree)
 

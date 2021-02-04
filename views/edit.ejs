@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Edit Trees Page</h1>
-        <form action="/trees/<%=tree.id%>?_method=PUT" method="POST">
+        <form action="/trees/<%=userId%>/<%=tree.id%>?_method=PUT" method="POST">
 		<!--  NOTE: the form is pre-populated with values for the server-->
 		Name: <input type="text" name="name" value="<%=tree.name%>"/><br/>
         Height: 
@@ -39,6 +39,8 @@
         <% } %> <br>
 		<br/>
 		<input type="submit" name="" value="Submit Changes"/>
-        </form>
+        </form> <br>
+        <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
+        <a href="/users/profile/<%=userId%>">Back to your profile</a>
     </body>
 </html>
