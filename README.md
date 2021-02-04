@@ -25,7 +25,7 @@ An app to help you choose the rigth tree for your garden.
     + Birds
     + Tools
 * Wireframe and define databases and their relationships
-![Databases](./documentation/tree databases.png)
+![Databases](./documentation/tree_databases.png)
 * Build the app basic strcuture using pair programing
     + Driver: Tom
     + Navigator: Hermilo
