@@ -6,8 +6,10 @@ const soilType = require('../models').soilType;
 const index = (req, res) => {
     Tree.findAll()
     .then(trees => {
+        console.log(req.params)
         res.render('index.ejs', {
-            trees : trees
+            trees : trees,
+            userId: req.params.userId
         });    
     })
     };
@@ -19,7 +21,8 @@ const renderNew = (req, res) => {
         .then(allSoilTypes => {
             res.render('new.ejs',{
                 climates: allClimates,
-                soilTypes: allSoilTypes
+                soilTypes: allSoilTypes,
+                userId: req.params.userId
             });
         })
     })
@@ -41,7 +44,8 @@ const renderTrees = (req, res) => {
     })
     .then(tree => {
         res.render('show.ejs', { //second param must be an object
-        tree: tree //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
+            tree: tree, //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
+            userId: req.params.userId
         });
     })
 };
@@ -91,7 +95,8 @@ const editTree = (req, res) => {
                         climates: allClimates,
                         soilTypes: allSoilTypes,
                         matchedClimates: matchedClimates,
-                        matchedSoilTypes: matchedSoilTypes
+                        matchedSoilTypes: matchedSoilTypes,
+                        userId: req.params.userId
                     }
                 );    
             })
@@ -100,7 +105,6 @@ const editTree = (req, res) => {
 };
 
 const newTree =  (req, res) => {
-    console.log(req.body)
     Tree.create(req.body)
     .then(newTree => {
         for(let i=0;i<req.body.checkedClimates.length;i++){
@@ -115,7 +119,7 @@ const newTree =  (req, res) => {
                 newTree.addSoilType(foundSoilType);
             })
         }
-        res.redirect('/trees'); //send the user back to /trees
+        res.redirect('/trees/'+req.params.userId); //send the user back to /trees
     })
 };
 
@@ -211,7 +215,7 @@ const updateTree = (req, res) => { //:index is the index of our fruits array tha
                             } 
                         }
                     }
-                    res.redirect('/trees');  //redirect to the index page
+                    res.redirect('/trees/'+req.params.userId);  //redirect to the index page
                 })
             })
        })
@@ -221,7 +225,7 @@ const updateTree = (req, res) => { //:index is the index of our fruits array tha
 const deleteTree = (req, res) => {
     Tree.destroy({ where: { id: req.params.id } })
     .then(() => {
-        res.redirect('/trees');  //redirect back to index route
+        res.redirect('/trees/'+req.params.userId);  //redirect back to index route
     })
   };
 

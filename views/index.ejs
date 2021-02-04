@@ -12,16 +12,16 @@
         <ul>
             <% for(let i=0; i<trees.length; i++) { %>
                 <li>
-                    <a href="/trees/<%=trees[i].id%>"> <%=trees[i].name%> </a>
-                    <form action="/trees/<%=trees[i].id; %>?_method=DELETE" method="POST">
+                    <a href="/trees/<%=userId%>/<%=trees[i].id%>"> <%=trees[i].name%> </a>
+                    <form action="/trees/<%=userId%>/<%=trees[i].id; %>?_method=DELETE" method="POST">
                         <input type="submit" value="DELETE"/>
                     </form>
-                    <a href="/trees/<%=trees[i].id; %>/edit">Edit</a>
+                    <a href="/trees/<%=userId%>/<%=trees[i].id; %>/edit">Edit</a>
                 </li>
             <% } %>
         </ul>
         <nav class="New">
-            <a href="/trees/new">Create a New Tree</a>
+            <a href="/trees/<%=userId%>/new">Create a New Tree</a>
         </nav>
         </div>
     </div>
