@@ -1,0 +1,20 @@
+.new {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://i.pinimg.com/474x/61/7f/02/617f02ff38fc2d19e691c57555a030b4.jpg");
+    background-size: cover;
+    background-blend-mode: lighten;
+    background-color: rgba(255,255,255,0.95);
+  }
+  .flex-container {
+    column-count: 4;
+    column-gap: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items:center;
+  }

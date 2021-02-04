@@ -3,30 +3,45 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/new.css">
     </head>
     <body>
         <h1>New Tree page</h1>
-        <form action="/trees/<%=userId%>" method="POST">
-            Name: <input type="text" name="name" /><br/>
-            Height: 
-            <select name="height">
-                <option value="Small" >Small</option>
-                <option value="Medium" >Medium</option>
-                <option value="Large" >Large</option>
-            </select> <br>
-            Img: <input type="text" name="img" /><br/>
-            Climate: <br>
-            <% for(let i=0;i<climates.length;i++){ %>
-                <input type="checkbox" name="checkedClimates" value="<%=climates[i].id%>"> <%=climates[i].name%>
-            <% } %> <br>
-            Soil Type: <br>
-            <% for(let i=0;i<soilTypes.length;i++){ %>
-                <input type="checkbox" name="checkedSoilTypes" value="<%=soilTypes[i].id%>"> <%=soilTypes[i].name%>
-            <% } %> <br>
-            <input type="submit" name="" value="Create Tree"/>
-        </form> <br>
-        <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
-        <a href="/users/profile/<%=userId%>">Back to your profile</a>
+        <div class ="new">
+            <form action="/trees/<%=userId%>" method="POST">
+                <div class="name">
+                Name: <input type="text" name="name" /><br/>
+                </div>
+                        <div class="flex-container">
+                            <div class="height">
+                            Height: 
+                            <select name="height">
+                                <option value="Small" >Small</option>
+                                <option value="Medium" >Medium</option>
+                                <option value="Large" >Large</option>
+                            </select> <br>
+                            Img: <input type="text" name="img" /><br/>
+                            </div>
+                            <div class="climate">
+                            Climate: <br>
+                            <% for(let i=0;i<climates.length;i++){ %>
+                                <input type="checkbox" name="checkedClimates" value="<%=climates[i].id%>"> <%=climates[i].name%>
+                                <br>
+                            <% } %> <br>
+                            </div>
+                            <div= class="soiltype">
+                            Soil Type: <br>
+                            <% for(let i=0;i<soilTypes.length;i++){ %>
+                                <input type="checkbox" name="checkedSoilTypes" value="<%=soilTypes[i].id%>"> <%=soilTypes[i].name%>
+                                <br>
+                            <% } %>
+                            </div>
+                            <br>
+                            <input type="submit" name="" value="Create Tree"/>
+                        </div>
+            </form> <br>
+            <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
+            <a href="/users/profile/<%=userId%>">Back to your profile</a>
+        </div>
     </body>
 </html>
