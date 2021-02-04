@@ -18,14 +18,16 @@
         </select> <br>
         Img: <input type="text" name="img" value="<%=tree.img%>"/><br/>
         Climate: 
-        <select name="climate">
-            <% for ( let i = 0; i < climates.length; i++ ) {
-                let selected = ( i == 0 ) ? "selected" : "";
-            %>
-                <option value="<%=climates[i].id%>" <%=selected%>><%=climates[i].name%>
-                </option>
-           <% } %>
-        </select> <br>
+        <% for(let i=0;i<climates.length;i++){ %>
+            <!-- reference for the checkbox https://developer.mozilla.org/es/docs/Web/HTML/Elemento/input/checkbox -->
+             <!-- Reference for the checked https://www.w3schools.com/tags/att_input_checked.asp -->
+            <input 
+                type="checkbox" 
+                name="checkedClimates" 
+                value="<%=climates[i].id%>"
+                <%if(matchedClimates[i]){%> <%="checked"%> <%}%>
+            > <%=climates[i].name%>
+        <% } %> <br>
         Soil type:
         <select name="soilType">
             <% for ( let i = 0; i < soilTypes.length; i++ ) {

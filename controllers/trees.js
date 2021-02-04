@@ -40,7 +40,6 @@ const renderTrees = (req, res) => {
         attributes: ['id', 'name', 'img', 'height', 'deciduous']
     })
     .then(tree => {
-        console.log(tree)
         res.render('show.ejs', { //second param must be an object
         tree: tree //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
         });
@@ -48,18 +47,43 @@ const renderTrees = (req, res) => {
 };
 
 const editTree = (req, res) => {
-    Tree.findByPk(req.params.id)
+    Tree.findByPk(req.params.id, {
+        include : [
+            {
+            model: Climate,
+            attributes: ['id','name']
+            },
+            {
+                model: soilType,
+                attributes: ['id','name']
+                },
+            ],
+        attributes: ['id', 'name', 'img', 'height', 'deciduous']
+    })
     .then(tree => {
         Climate.findAll()
         .then(allClimates => {
             soilType.findAll()
             .then(allSoilTypes => {
+                // Generate an array for the matched climates
+                console.log(tree.climates.length)
+                let matchedClimates=[];
+                for(let i=0;i<allClimates.length;i++){
+                    matchedClimates[i]=false;
+                    for(let j=0;j<tree.climates.length;j++){
+                        if(allClimates[i].id===tree.climates[j].id){
+                            matchedClimates[i]=true;
+                        }                  
+                    }
+                }
+                console.log(matchedClimates)
                 res.render(
                     'edit.ejs', //render views/edit.ejs
                     {       //pass in an object that contains
                         tree: tree, //the fruit object
                         climates: allClimates,
                         soilTypes: allSoilTypes,
+                        matchedClimates: matchedClimates
                     }
                 );    
             })
