@@ -9,7 +9,12 @@
         <h1>New Tree page</h1>
         <form action="/trees" method="POST">
             Name: <input type="text" name="name" /><br/>
-            Height: <input type="text" name="height" /><br/>
+            Height: 
+            <select name="height">
+                <option value="Small" >Small</option>
+                <option value="Medium" >Medium</option>
+                <option value="Large" >Large</option>
+            </select> <br>
             Img: <input type="text" name="img" /><br/>
             <input type="submit" name="" value="Create Tree"/>
         </form>
