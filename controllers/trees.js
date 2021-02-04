@@ -163,8 +163,15 @@ const updateTree = (req, res) => { //:index is the index of our fruits array tha
                             }                  
                         }
                     }
+                    let checkedClimates=[];
+                    if(Array.isArray(req.body.checkedClimates)){
+                        checkedClimates=req.body.checkedClimates;
+                    }else{
+                        checkedClimates=[req.body.checkedClimates];
+                    }
                     for(let i=0;i<allClimates.length;i++){
-                        if(req.body.checkedClimates.filter((climate)=>{return parseInt(climate)==allClimates[i].id}).length>0){
+                        let tempClimate=checkedClimates.filter((climate)=>{return parseInt(climate)==allClimates[i].id});
+                        if((tempClimate.length)>0){
                             if(matchedClimates[i]===false){
                                 Climate.findByPk(allClimates[i].id)
                                 .then(foundClimate=>{
@@ -180,8 +187,15 @@ const updateTree = (req, res) => { //:index is the index of our fruits array tha
                             } 
                         }
                     }
+                    let checkedSoilTypes=[];
+                    if(Array.isArray(req.body.checkedSoilTypes)){
+                        checkedSoilTypes=req.body.checkedSoilTypes;
+                    }else{
+                        checkedSoilTypes=[req.body.checkedSoilTypes];
+                    } 
                     for(let i=0;i<allSoilTypes.length;i++){
-                        if(req.body.checkedSoilTypes.filter((soilType)=>{return parseInt(soilType)==allSoilTypes[i].id}).length>0){
+                        let tempSoilType=checkedSoilTypes.filter((soilType)=>{return parseInt(soilType)==allSoilTypes[i].id});
+                        if((tempSoilType.length)>0){
                             if(matchedSoilTypes[i]===false){
                                 soilType.findByPk(allSoilTypes[i].id)
                                 .then(foundSoilType=>{
