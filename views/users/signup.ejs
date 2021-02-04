@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Signup Page</h1>
-    <form action='/users/profile' method="POST">
-        name: <input type="text" name='name'>
-        username: <input type="text" name='username'>
-        password: <input type="text" name='password'>
-        email: <input type="text" name='email'>
-        location: <input type="text" name='location'>
-        <input type="submit" value='signup'>
-    </form>
+    <div class="signup">
+        <form action='/users/profile' method="POST">
+            name: <input type="text" name='name'>
+            <br>
+            username: <input type="text" name='username'>
+            <br>
+            password: <input type="text" name='password'>
+            <br>
+            email: <input type="text" name='email'>
+            <br>
+            location: <input type="text" name='location'>
+            <br>
+            <input type="submit" value='signup'>
+        </form>
+    </div>
 </body>
 </html>

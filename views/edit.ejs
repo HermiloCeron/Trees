@@ -3,10 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
+        <link rel="stylesheet" href="/css/edit.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+        </head>
     <body>
         <h1>Edit Trees Page</h1>
+        <div class="edit">
         <form action="/trees/<%=userId%>/<%=tree.id%>?_method=PUT" method="POST">
 		<!--  NOTE: the form is pre-populated with values for the server-->
 		Name: <input type="text" name="name" value="<%=tree.name%>"/><br/>
@@ -17,7 +20,8 @@
             <option value="Large" <%if(tree.height==='Large'){%> <%="selected"%> <%}%>>Large</option>
         </select> <br>
         Img: <input type="text" name="img" value="<%=tree.img%>"/><br/>
-        Climate: 
+        Climate:
+        <br>
         <% for(let i=0;i<climates.length;i++){ %>
             <!-- reference for the checkbox https://developer.mozilla.org/es/docs/Web/HTML/Elemento/input/checkbox -->
              <!-- Reference for the checked https://www.w3schools.com/tags/att_input_checked.asp -->
@@ -27,8 +31,10 @@
                 value="<%=climates[i].id%>"
                 <%if(matchedClimates[i]){%> <%="checked"%> <%}%>
             > <%=climates[i].name%>
+            <br>
         <% } %> <br>
-        Soil type: 
+        Soil type:
+        <br>
         <% for(let i=0;i<soilTypes.length;i++){ %>
             <input 
                 type="checkbox" 
@@ -36,11 +42,13 @@
                 value="<%=soilTypes[i].id%>"
                 <%if(matchedSoilTypes[i]){%> <%="checked"%> <%}%>
             > <%=soilTypes[i].name%>
+            <br>
         <% } %> <br>
 		<br/>
 		<input type="submit" name="" value="Submit Changes"/>
         </form> <br>
         <a href="/trees/<%=userId%>">Back to the trees page</a> <br>
         <a href="/users/profile/<%=userId%>">Back to your profile</a>
+        </div>
     </body>
 </html>

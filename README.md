@@ -89,10 +89,19 @@ An app to help you choose the rigth tree for your garden.
 3.	As a user I want to be able to add a new tree species that is not in the database.
 4.	As a user I want to be able to set an owner for a tree.
 5.	As a user I want to be able to edit information in a tree’s database.
+6.  As a user I want to be able to like a tree when I am visiting the show page
+7.  As a user I want to be able to return to the trees page when I am in the show page
+8.  As a user I want to be able to return to the profile page when I am in the show page
+9.  As a user I want to be able to return to the profile page when I am in the index page
+10.  As a user I want to be able to delete a tree from my list of likes when I am in the profile page
+
 
 ## Unsolved problems
 
 - [JWT and bcrypt](https://git.generalassemb.ly/jd-seir-6/jwt-auth)
+- Improve styling
+- When selecting a climate show what trees are included in that climate
+- When selecting a soil type show what trees can grow there
 
 ## Link to the app
 
