@@ -19,7 +19,7 @@ const showProfile = (req, res) => {
         include : [
             {
             model: Tree,
-            attributes: ['name']
+            attributes: ['id','name']
             },
         ],
         attributes: ['id', 'name', 'username', 'password', 'email', 'location']
@@ -84,6 +84,17 @@ const deleteUser = (req,res) => {
     })
 }
 
+const deleteUserTree=(req,res)=>{
+    User.findByPk(req.params.userId)
+    .then(foundUser => {
+        Tree.findByPk(req.params.treeId)
+        .then(foundTree=>{
+            foundUser.removeTree(foundTree);
+            res.redirect('/users/profile/' + req.params.userId)
+        })
+    })
+}
+
 module.exports = {
     renderHomepage,
     signup,
@@ -93,4 +104,5 @@ module.exports = {
     editUser,
     loginUser,
     deleteUser,
+    deleteUserTree
 }
