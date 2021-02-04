@@ -57,7 +57,7 @@ An app to help you choose the rigth tree for your garden.
             altitude: 'low'
         },
         ```
-        - Soil type date
+        - Soil type data
         ```javascript
         {
             name : 'Clay',
@@ -95,3 +95,6 @@ An app to help you choose the rigth tree for your garden.
 - [JWT and bcrypt](https://git.generalassemb.ly/jd-seir-6/jwt-auth)
 
 ## Link to the app
+
+* [Git repo](https://github.com/tjgores/Trees)
+* [Heroku deployment]()
