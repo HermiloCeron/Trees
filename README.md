@@ -25,9 +25,92 @@ An app to help you choose the rigth tree for your garden.
     + Birds
     + Tools
 * Wireframe and define databases and their relationships
-![Wireframe](./documentation/wireframe.png)
-![Databases](./documentation/tree_databases.png)
-* Build the app basic strcuture using pair programing taking fruit-app as boilerplate
+    + ![Wireframe](./documentation/wireframe.png)
+    + ![Databases](./documentation/tree_databases.png)
+        - Users data
+        ````
+        {
+        name:'Tony Stark',
+        username: 'ironman',
+        password: 'prettyawesome',
+        email: 'tony@mail.com',
+        location: 'Cleveland, OH'
+    },
+    {
+        name:'Clark Kent',
+        username: 'superman',
+        password: 'canfly',
+        email: 'super@mail.com',
+        location: 'Bakersfield, CA'
+    },
+    {
+        name:'Bruce Wayne',
+        username: 'batman',
+        password: 'hasgadgets',
+        email: 'bat@mail.com',
+        location: 'St. Louis, MO'
+    },
+    {
+        name: 'Johny Bravo',
+        username: 'coolbravo',
+        password: '12345',
+        email: 'bravo@mail.com',
+        location: 'Lexington-Fayette, KY'
+    },
+    {
+        name: 'Homer Simpson',
+        username: 'atomichomer',
+        password: 'likecake',
+        email: 'donut@mail.com',
+        location: 'Lubbock, TX'
+    },
+    {
+        name: 'Tom Sawyer',
+        username: 'tommy',
+        password: 'alabama',
+        email: '@mail.com',
+        location: 'Montgomery, Alabama'
+    },
+    {
+        name: 'Mr Wilson',
+        username: 'runfromdaniel',
+        password: 'help',
+        email: '@mail.com',
+        location: 'Milwaukee, WI'
+    },
+    {
+        name:'Peter Parker',
+        username: 'spiderman',
+        password: 'superhero',
+        email: 'spider@mail.com',
+        location: 'St. Petersburg, FL'
+    },
+    {
+        name:'Oz Wizard',
+        username: 'magicman',
+        password: 'opuspokus',
+        email: 'magic@mail.com',
+        location: 'Henderson, NV'
+    },
+    {
+        name:'Captain Caveman',
+        username: 'caveman',
+        password: 'andson',
+        email: 'caveman@mail.com',
+        location: 'Las Vegas, NV'
+    },
+    {
+        name: 'George Jetson',
+        username: 'jetson',
+        password: 'future',
+        email: 'gjetson@mail.com',
+        location: 'Phoenix, AZ'
+    }
+        ```
+        - Trees data
+        - Climate data
+        - Soil type date
+* Build the app basic structure using pair programing taking fruit-app as boilerplate
     + Pair programing organization:
         - Driver: Tom
         - Navigator: Hermilo
@@ -41,7 +124,7 @@ An app to help you choose the rigth tree for your garden.
         - [Sequelize](https://git.generalassemb.ly/jd-seir-6/sequelize-intro/blob/master/README.md)
         - [Set-up databases associations](https://git.generalassemb.ly/jd-seir-6/sequelize-associations/blob/master/README.md)
         - [Heroku deployment](https://git.generalassemb.ly/jd-seir-6/nodejs-postgres-heroku-deployment/blob/master/README.md)
-* After that, split the jog in specific tasks. For example: documentation, styling, etc
+* After that, split the job in specific tasks. For example: documentation, styling, etc
 
 ## User stories
 
@@ -53,6 +136,6 @@ An app to help you choose the rigth tree for your garden.
 
 ## Unsolved problems
 
-- [](https://git.generalassemb.ly/jd-seir-6/jwt-auth)
+- [JWT and bcrypt](https://git.generalassemb.ly/jd-seir-6/jwt-auth)
 
 ## Link to the app
