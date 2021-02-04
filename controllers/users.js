@@ -68,15 +68,15 @@ const loginUser = (req, res) => {
         }
     })
     .then (user => {
-        res.redirect('/users/profile/' + user.id)
+        if(user){
+            res.redirect('/users/profile/' + user.id)
+        }else{
+            res.redirect('/users/signup/')
+        }
+        
     })
-    // for (i=0; i<users.length; i++) {
-    //     if (users[i].username === req.body.username && users[i].password === req.body.password) {
-    //         res.redirect('/users/profile/' + i)        
-    //     }
-    // }
-        res.redirect('/users/signup/')
-    }    
+}
+    
 const deleteUser = (req,res) => {
     User.destroy({ where: { id: req.params.id } })
     .then(() => {

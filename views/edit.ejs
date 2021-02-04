@@ -10,24 +10,33 @@
         <form action="/trees/<%=tree.id%>?_method=PUT" method="POST">
 		<!--  NOTE: the form is pre-populated with values for the server-->
 		Name: <input type="text" name="name" value="<%=tree.name%>"/><br/>
-        Height: <input type="text" name="height" value="<%=tree.height%>"/><br/>
+        Height: 
+        <select name="height">
+            <option value="Small" <%if(tree.height==='Small'){%> <%="selected"%> <%}%>>Small</option>
+            <option value="Medium" <%if(tree.height==='Medium'){%> <%="selected"%> <%}%>>Medium</option>
+            <option value="Large" <%if(tree.height==='Large'){%> <%="selected"%> <%}%>>Large</option>
+        </select> <br>
         Img: <input type="text" name="img" value="<%=tree.img%>"/><br/>
-        <select name="climate">
-            <% for ( let i = 0; i < climates.length; i++ ) {
-                let selected = ( i == 0 ) ? "selected" : "";
-            %>
-                <option value="<%=climates[i].id%>" <%=selected%>><%=climates[i].name%>
-                </option>
-           <% } %>
-        </select>
-        <select name="soilType">
-            <% for ( let i = 0; i < soilTypes.length; i++ ) {
-                let selected = ( i == 0 ) ? "selected" : "";
-            %>
-                <option value="<%=soilTypes[i].id%>" <%=selected%>><%=soilTypes[i].name%>
-                </option>
-           <% } %>
-        </select>
+        Climate: 
+        <% for(let i=0;i<climates.length;i++){ %>
+            <!-- reference for the checkbox https://developer.mozilla.org/es/docs/Web/HTML/Elemento/input/checkbox -->
+             <!-- Reference for the checked https://www.w3schools.com/tags/att_input_checked.asp -->
+            <input 
+                type="checkbox" 
+                name="checkedClimates" 
+                value="<%=climates[i].id%>"
+                <%if(matchedClimates[i]){%> <%="checked"%> <%}%>
+            > <%=climates[i].name%>
+        <% } %> <br>
+        Soil type: 
+        <% for(let i=0;i<soilTypes.length;i++){ %>
+            <input 
+                type="checkbox" 
+                name="checkedSoilTypes" 
+                value="<%=soilTypes[i].id%>"
+                <%if(matchedSoilTypes[i]){%> <%="checked"%> <%}%>
+            > <%=soilTypes[i].name%>
+        <% } %> <br>
 		<br/>
 		<input type="submit" name="" value="Submit Changes"/>
         </form>
